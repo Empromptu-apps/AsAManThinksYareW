@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-primary-100 via-secondary-50 to-accent-100;
+    @apply dark:from-primary-900 dark:via-secondary-900 dark:to-accent-900;
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-xl;
+    @apply dark:bg-black/10 dark:border-white/10;
+  }
+  
+  .glass-button {
+    @apply bg-white/15 backdrop-blur-sm border border-white/20 rounded-xl px-6 py-3;
+    @apply text-white font-medium transition-all duration-300;
+    @apply hover:bg-white/25 hover:shadow-lg hover:-translate-y-0.5;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2;
+    @apply dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/15;
+  }
+  
+  .glass-input {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3;
+    @apply text-white placeholder-white/60 transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400;
+    @apply dark:bg-white/5 dark:border-white/10 dark:text-white;
+  }
+  
+  .primary-button {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold;
+    @apply px-8 py-3 rounded-xl transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2;
+    @apply hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .secondary-button {
+    @apply bg-secondary-500 hover:bg-secondary-600 text-white font-semibold;
+    @apply px-8 py-3 rounded-xl transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-secondary-400 focus:ring-offset-2;
+    @apply hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .success-button {
+    @apply bg-green-500 hover:bg-green-600 text-white font-semibold;
+    @apply px-6 py-2 rounded-lg transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2;
+  }
+  
+  .danger-button {
+    @apply bg-red-500 hover:bg-red-600 text-white font-semibold;
+    @apply px-6 py-2 rounded-lg transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2;
+  }
+  
+  .upload-zone {
+    @apply border-2 border-dashed border-primary-300 rounded-2xl p-8;
+    @apply bg-white/5 hover:bg-white/10 transition-all duration-300;
+    @apply dark:border-primary-600 dark:bg-white/5;
+  }
+  
+  .progress-bar {
+    @apply w-full bg-white/20 rounded-full h-2 overflow-hidden;
+    @apply dark:bg-white/10;
+  }
+  
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full;
+    @apply transition-all duration-500 ease-out;
+  }
+  
+  .spinner {
+    @apply animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Dark mode toggle */
+.dark-mode-toggle {
+  @apply fixed top-4 right-4 z-50 p-2 rounded-full;
+  @apply bg-white/20 backdrop-blur-sm border border-white/20;
+  @apply hover:bg-white/30 transition-all duration-300;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-400;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .glass-card {
+    @apply mx-4 p-6;
+  }
+  
+  .upload-zone {
+    @apply p-6;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass-card {
+    @apply border-2 border-gray-800 bg-white;
+    @apply dark:border-gray-200 dark:bg-gray-900;
+  }
+  
+  .glass-button {
+    @apply border-2 border-gray-800 bg-white text-gray-900;
+    @apply dark:border-gray-200 dark:bg-gray-900 dark:text-gray-100;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
